@@ -29,6 +29,10 @@ router.post(
 	'/',
 	passport.authenticate('jwt', { session: false }),
 	(req, res) => {
+		const { isValid, errors } = require('../../validation/post')(req.body);
+		if (!isValid) {
+			res.status(400).json(errors);
+		}
 		const newPost = new Post({
 			text: req.body.text,
 			user: req.user.id,
