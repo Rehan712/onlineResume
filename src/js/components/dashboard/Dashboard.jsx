@@ -7,6 +7,8 @@ import { Link } from "react-router-dom";
 import ProfileActions from "./ProfileActions";
 import { Button } from "@material-ui/core";
 import Experience from "./Experience.jsx";
+import Education from "./Education";
+import { shape, func, arrayOf, any, string } from "prop-types";
 
 class Dashboard extends Component {
   render() {
@@ -56,6 +58,12 @@ class Dashboard extends Component {
                         profileData.data.experience
                       }
                     />
+                    <Education
+                      education={
+                        Object.keys(profileData.data).length &&
+                        profileData.data.education
+                      }
+                    />
                     <div style={{ marginBottom: 60 }}>
                       <Button
                         variant="raised"
@@ -81,6 +89,18 @@ function mapStateToProps({ profileData }) {
     profileData
   };
 }
+
+Dashboard.propsTypes = {
+  profileData: shape({
+    data: shape({
+      handle: string,
+      location: string,
+      education: arrayOf(any),
+      experience: arrayOf(any)
+    })
+  }),
+  deleteProfile: func.isRequired
+};
 export default connect(
   mapStateToProps,
   {

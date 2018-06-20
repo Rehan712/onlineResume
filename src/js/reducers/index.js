@@ -6,6 +6,8 @@ import getCurrentProfileReducer from "./getCurrentProfileReducer";
 import inputProfileDataReducer from "./inputProfileDataReducer";
 import inputExperienceReducer from "./inputExperienceReducer";
 import inputEducationReducer from "./inputEducationReducer";
+import getAllProfileReducer from "./getAllProfileReducer";
+import getProfileHandleReducer from "./getProfileHandleReducer";
 
 const rootReducer = combineReducers({
   inputSignupData: inputSignupReducer,
@@ -14,7 +16,9 @@ const rootReducer = combineReducers({
   profileData: getCurrentProfileReducer,
   inputProfileData: inputProfileDataReducer,
   inputExperienceData: inputExperienceReducer,
-  inputEducationData: inputEducationReducer
+  inputEducationData: inputEducationReducer,
+  allProfilesData: getAllProfileReducer,
+  getProfileHandle: getProfileHandleReducer
 });
 
 export default rootReducer;

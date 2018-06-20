@@ -547,19 +547,76 @@ export function deleteEducation(id) {
 
 export function deleteEducationAttempt() {
   return {
-    type: types.DELETE_EDUCATION_DATA_ATTEMPT
+    type: types.DELETE_EDUCATION_ATTEMPT
   };
 }
 
 export function deleteEducationSuccess() {
   return {
-    type: types.DELETE_EDUCATION_DATA_SUCCESS
+    type: types.DELETE_EDUCATION_SUCCESS
   };
 }
 
 export function deleteEducationError(error) {
   return {
-    type: types.DELETE_EDUCATION_DATA_FAIL,
+    type: types.DELETE_EDUCATION_FAIL,
+    payload: error
+  };
+}
+
+// Get All Profiles Actions
+
+export function getAllProfile() {
+  return {
+    type: types.GET_ALL_PROFILE
+  };
+}
+
+export function getAllProfileSuccess(data) {
+  return {
+    type: types.GET_ALL_PROFILE_SUCCESS,
+    payload: data
+  };
+}
+
+export function getAllProfileAttempt() {
+  return {
+    type: types.GET_ALL_PROFILE_ATTEMPT
+  };
+}
+
+export function getAllProfileFail(error) {
+  return {
+    type: types.GET_ALL_PROFILE_FAIL,
+    payload: error
+  };
+}
+
+// Get Profile By Handle Actions
+
+export function getProfileHandle(handle) {
+  return {
+    type: types.GET_PROFILE_HANDLE,
+    payload: handle
+  };
+}
+
+export function getProfileHandleSuccess(data) {
+  return {
+    type: types.GET_PROFILE_HANDLE_SUCCESS,
+    payload: data
+  };
+}
+
+export function getProfileHandleAttempt() {
+  return {
+    type: types.GET_PROFILE_HANDLE_ATTEMPT
+  };
+}
+
+export function getProfileHandleFail(error) {
+  return {
+    type: types.GET_PROFILE_HANDLE_FAIL,
     payload: error
   };
 }

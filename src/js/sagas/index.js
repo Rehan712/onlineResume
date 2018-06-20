@@ -10,6 +10,9 @@ import deleteProfileSaga from "./deleteProfileDataSaga";
 import submitExperienceDataSaga from "./submitExperienceDataSaga";
 import submitEducationDataSaga from "./submitEducationDataSaga";
 import deleteExperienceSaga from "./deleteExperienceSaga";
+import deleteEducationSaga from "./deleteEducationSaga";
+import getAllProfileSaga from "./getAllProfilesSaga";
+import getProfileHandleSaga from "./getProfileHandleSaga";
 
 function* watchSubmitRegisterData() {
   yield takeLatest(types.SUBMIT_REGISTER_DATA, submitRegisterSaga);
@@ -51,6 +54,17 @@ function* watchDeleteExperienceData() {
   yield takeLatest(types.DELETE_EXPERIENCE, deleteExperienceSaga);
 }
 
+function* watchDeleteEducationData() {
+  yield takeLatest(types.DELETE_EDUCATION, deleteEducationSaga);
+}
+
+function* watchGetAllProfileData() {
+  yield takeLatest(types.GET_ALL_PROFILE, getAllProfileSaga);
+}
+function* watchGetProfileHandleData() {
+  yield takeLatest(types.GET_PROFILE_HANDLE, getProfileHandleSaga);
+}
+
 export default function* rootSaga() {
   yield all([
     fork(watchSubmitRegisterData),
@@ -61,7 +75,10 @@ export default function* rootSaga() {
     fork(watchGetCurrentProfileData),
     fork(watchSignoutUser),
     fork(watchSubmitProfileData),
-    fork(watchDeleteExperienceData)
+    fork(watchDeleteExperienceData),
+    fork(watchDeleteEducationData),
+    fork(watchGetAllProfileData),
+    fork(watchGetProfileHandleData)
     //fork(watchDeleteProfileData)
   ]);
 }

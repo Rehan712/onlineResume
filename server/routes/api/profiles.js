@@ -12,13 +12,12 @@ router.get("/test", (req, res) => {
 });
 
 router.get("/all", (req, res) => {
-  Profile.find({}, (err, profiles) => {
-    if (err) {
-      res.status(404).json({ message: "cannot find the profiles" });
-    } else {
+  Profile.find()
+    .populate("user", ["name", "avatar"], User)
+    .then(profiles => {
       res.json(profiles);
-    }
-  });
+    })
+    .catch(e => res.status(404).json(e));
 });
 
 router.get(
@@ -55,11 +54,10 @@ router.get(
   }
 );
 
-router.get(
-  "/handle/:handle",
-  passport.authenticate("jwt", { session: false }),
-  (req, res) => {
-    Profile.findOne({ handle: req.params.handle }, (err, profile) => {
+router.get("/handle/:handle", (req, res) => {
+  Profile.findOne({ handle: req.params.handle })
+    .populate("user", ["name", "avatar"], User)
+    .then(profile => {
       if (!profile) {
         res.status(404).json({
           message: "There is no profile witn this handle name"
@@ -67,9 +65,9 @@ router.get(
       } else {
         res.status(201).json(profile);
       }
-    });
-  }
-);
+    })
+    .catch(e => res.status(404).json(e));
+});
 
 router.post(
   "/",
@@ -125,11 +123,11 @@ router.post(
         profile.githubUsername = profileFields.githubUsername;
         profile.company = profileFields.company;
         profile.bio = profileFields.bio;
-        profile.youtube = profileFields.social.youtube;
-        profile.facebook = profileFields.social.facebook;
-        profile.instagram = profileFields.social.instagram;
-        profile.linkedin = profileFields.social.linkedin;
-        profile.twitter = profileFields.social.twitter;
+        profile.social.youtube = profileFields.social.youtube;
+        profile.social.facebook = profileFields.social.facebook;
+        profile.social.instagram = profileFields.social.instagram;
+        profile.social.linkedin = profileFields.social.linkedin;
+        profile.social.twitter = profileFields.social.twitter;
 
         profile
           .save()

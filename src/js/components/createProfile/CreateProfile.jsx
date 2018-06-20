@@ -230,7 +230,7 @@ export default connect(
     changeBio: actions.changeProfileBio,
     changeSkills: actions.changeProfileSkills,
     changeCompany: actions.changeProfileCompany,
-    changeGithubUsername: actions.changeGithubUsername,
+    changeGithubUsername: actions.changeProfileGithubUsername,
     changeWebsite: actions.changeProfileWebsite,
     changeYoutube: actions.changeProfileYoutube,
     changeFacebook: actions.changeProfileFacebook,

@@ -6,6 +6,8 @@ import Landing from "./layout/Landing";
 import Login from "./auth/Login";
 import Register from "./auth/Register";
 import DashboardHome from "./dashboard/DashboardHome";
+import Profiles from "./profiles/Profiles";
+import Profile from "./profile/Profile";
 // import CreateProfile from "./createProfile/CreateProfile";
 
 class App extends React.Component {
@@ -19,6 +21,8 @@ class App extends React.Component {
           <Route exact path="/register" component={Register} />
           <Route path="/dashboard" component={DashboardHome} />
           <Route exact path="/dashboard/Profile" component={DashboardHome} />
+          <Route path="/allProfiles" component={Profiles} />
+          <Route path="/profile/:handle" component={Profile} />
 
           {/* <Route
             exact

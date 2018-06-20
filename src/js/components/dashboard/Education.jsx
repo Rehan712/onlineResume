@@ -4,15 +4,14 @@ import * as actions from "../../actions";
 import Moment from "react-moment";
 import { arrayOf, func, any } from "prop-types";
 
-const Experience = ({ experience, deleteExperience }) => {
-  console.log("this is experience", experience);
+const Education = ({ education, deleteEducation }) => {
   const renderData =
-    experience.length &&
-    experience.map(item => {
+    education.length &&
+    education.map(item => {
       return (
         <tr>
-          <td>{item.company}</td>
-          <td>{item.title}</td>
+          <td>{item.school}</td>
+          <td>{item.degree}</td>
           <td>
             {" "}
             <Moment format="YYYY/MM/DD">{item.from}</Moment> -{" "}
@@ -24,7 +23,7 @@ const Experience = ({ experience, deleteExperience }) => {
           </td>
           <td>
             <button
-              onClick={() => deleteExperience(item._id)}
+              onClick={() => deleteEducation(item._id)}
               class="btn btn-danger"
             >
               Delete
@@ -33,34 +32,38 @@ const Experience = ({ experience, deleteExperience }) => {
         </tr>
       );
     });
+
+  console.log("this is renderData", renderData);
   return (
     <div>
-      <h4 class="mb-2">Experience Credentials</h4>
+      <h4 class="mb-2">Education Credentials</h4>
       <table class="table">
         <thead>
           <tr>
-            <th>Company</th>
-            <th>Title</th>
+            <th>School</th>
+            <th>Degree</th>
             <th>Years</th>
             <th />
           </tr>
         </thead>
-        <tbody>
-          {experience.length && renderData.length
-            ? renderData
-            : "There is no Experience added"}
+        <tbody className="col-md-12">
+          {education.length && renderData.length ? (
+            renderData
+          ) : (
+            <div>There is no Education Added yet</div>
+          )}
         </tbody>
       </table>
     </div>
   );
 };
 
-Experience.propTypes = {
-  deleteExperience: func.isRequired,
-  experience: arrayOf(any).isRequired
+Education.propTypes = {
+  deleteEducation: func.isRequired,
+  education: arrayOf(any).isRequired
 };
 
 export default connect(
   null,
-  { deleteExperience: actions.deleteExperience }
-)(Experience);
+  { deleteEducation: actions.deleteEducation }
+)(Education);

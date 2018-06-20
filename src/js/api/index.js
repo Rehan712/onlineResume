@@ -73,6 +73,17 @@ export async function deleteProfileApi() {
   return res.data;
 }
 
+export async function deleteEducationApi(id) {
+  const token = localStorage.getItem("token");
+  const res = await axios.delete(`/api/profile/education/${id}`, {
+    headers: {
+      Authorization: token
+    }
+  });
+  console.log("this is response", res.data);
+  return res.data;
+}
+
 export async function deleteExperienceApi(id) {
   const token = localStorage.getItem("token");
   const res = await axios.delete(`/api/profile/experience/${id}`, {
@@ -82,4 +93,14 @@ export async function deleteExperienceApi(id) {
   });
   console.log("this is response", res.data);
   return res.data;
+}
+
+export async function getAllProfileApi() {
+  const res = await axios.get("/api/profile/all");
+  return res;
+}
+
+export async function getProfileHandleApi(handle) {
+  const res = await axios.get(`/api/profile/handle/${handle}`);
+  return res;
 }
