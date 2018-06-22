@@ -11,7 +11,7 @@ class Profiles extends Component {
     this.props.getAllProfiles();
   }
   render() {
-    const { allProfiles } = this.props;
+    const { allProfiles, errors } = this.props;
     let profileItems;
     if (allProfiles.isLoading) {
       profileItems = <Spinner />;
@@ -38,6 +38,11 @@ class Profiles extends Component {
                   Browse and connect with developers
                 </p>
                 {profileItems}
+                {Object.keys(errors).length ? (
+                  <div className="invalid-feedback">{errors.message}</div>
+                ) : (
+                  ""
+                )}
               </div>
             </div>
           </div>
@@ -49,7 +54,8 @@ class Profiles extends Component {
 
 function mapStateToProps(state) {
   return {
-    allProfiles: state.allProfilesData
+    allProfiles: state.allProfilesData,
+    errors: state.errors
   };
 }
 

@@ -10,7 +10,8 @@ class Login extends Component {
       inputData,
       changeEmail,
       changePassword,
-      submitLoginData
+      submitLoginData,
+      submitErrors
     } = this.props;
     const { errors } = inputData;
     console.log("these are the errors from login", errors);
@@ -21,6 +22,11 @@ class Login extends Component {
             <div className="row">
               <div className="col-md-8 m-auto">
                 <h1 className="display-4 text-center">Log In</h1>
+                {Object.keys(submitErrors).length ? (
+                  <div className="invalid-feedback">{submitErrors.message}</div>
+                ) : (
+                  ""
+                )}
                 <p className="lead text-center">
                   Sign in to your DevConnector account
                 </p>
@@ -64,7 +70,8 @@ class Login extends Component {
 }
 function mapStateToProps(state) {
   return {
-    inputData: state.inputLoginData
+    inputData: state.inputLoginData,
+    submitErrors: state.errors
   };
 }
 

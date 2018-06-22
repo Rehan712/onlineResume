@@ -8,10 +8,10 @@ export default function* submitEducationDataSaga(action) {
 
   yield put(actions.submitEducationDataAttempt());
   try {
-    yield call(api.submitEducationApi, data);
-    yield put(actions.submitEducationDataSuccess());
+    const res = yield call(api.submitEducationApi, data);
+    yield put(actions.submitEducationDataSuccess(res));
+    alert("Submit Education Successfuly");
     yield put(actions.resetEducation());
-    yield put(push("/dashboard"));
   } catch (e) {
     yield put(actions.submitEducationDataError(e.response.data));
   }

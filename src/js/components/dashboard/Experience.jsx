@@ -4,7 +4,7 @@ import * as actions from "../../actions";
 import Moment from "react-moment";
 import { arrayOf, func, any } from "prop-types";
 
-const Experience = ({ experience, deleteExperience }) => {
+const Experience = ({ experience, deleteExperience, getCurrentProfile }) => {
   console.log("this is experience", experience);
   const renderData =
     experience.length &&
@@ -24,7 +24,10 @@ const Experience = ({ experience, deleteExperience }) => {
           </td>
           <td>
             <button
-              onClick={() => deleteExperience(item._id)}
+              onClick={() => {
+                deleteExperience(item._id);
+                setTimeout(() => getProfile(), 2000);
+              }}
               class="btn btn-danger"
             >
               Delete
@@ -62,5 +65,8 @@ Experience.propTypes = {
 
 export default connect(
   null,
-  { deleteExperience: actions.deleteExperience }
+  {
+    deleteExperience: actions.deleteExperience,
+    getProfile: actions.getCurrentProfile
+  }
 )(Experience);

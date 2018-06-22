@@ -5,12 +5,15 @@ import { push } from "react-router-redux";
 
 export default function* deleteEducationSaga(action) {
   const id = action.payload;
-  yield put(actions.deleteEducationAttempt());
-  try {
-    yield call(api.deleteEducationApi, id);
-    yield put(actions.deleteEducationSuccess());
-    yield put(push("/dashboard"));
-  } catch (e) {
-    yield put(actions.deleteEducationError(e.response.data));
+  if (confirm("Are you confirm to permanent Delete Education")) {
+    yield put(actions.deleteEducationAttempt());
+    try {
+      yield call(api.deleteEducationApi, id);
+      yield put(actions.deleteEducationSuccess());
+      alert("Education Deleted Successfuly");
+      yield put(push("/dashboard"));
+    } catch (e) {
+      yield put(actions.deleteEducationError(e.response.data));
+    }
   }
 }

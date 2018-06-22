@@ -6,6 +6,7 @@ import TextFieldAreaBootstrap from "../reuseableComponents/TextFieldAreaBootstra
 import TextFieldIcon from "../reuseableComponents/TextFieldIcon";
 import SelectFieldBootstrap from "../reuseableComponents/SelectFieldBootstrap";
 import Button from "@material-ui/core/Button";
+import { Link } from "react-router-dom";
 
 class CreateProfile extends Component {
   render() {
@@ -28,7 +29,8 @@ class CreateProfile extends Component {
       submitData,
       // Input Data for the textfields
       inputProfile,
-      createEdit
+      createEdit,
+      submitErrors
     } = this.props;
     console.log("this is createEdit from CreateProfile", createEdit);
     const {
@@ -66,12 +68,17 @@ class CreateProfile extends Component {
           <div className="container">
             <div className="row">
               <div className="col-md-8 m-auto">
-                <a href="dashboard.html" className="btn btn-light">
+                <Link to="/dashboard" className="btn btn-light">
                   Go Back
-                </a>
+                </Link>
                 <h1 className="display-4 text-center">
                   {createEdit} Your Profile
                 </h1>
+                {Object.keys(submitErrors).length ? (
+                  <div className="invalid-feedback">{submitErrors.message}</div>
+                ) : (
+                  ""
+                )}
                 <p className="lead text-center">
                   Let's get some information to make your profile stand out
                 </p>
@@ -217,7 +224,8 @@ class CreateProfile extends Component {
 
 function mapStateToProps(state) {
   return {
-    inputProfile: state.inputProfileData
+    inputProfile: state.inputProfileData,
+    submitErrors: state.errors
   };
 }
 

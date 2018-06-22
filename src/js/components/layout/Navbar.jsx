@@ -5,7 +5,7 @@ import * as actions from "../../actions";
 import { isTokenValid } from "../../utils";
 import { func } from "prop-types";
 
-const Navbar = ({ signoutUser }) => {
+const Navbar = ({ signoutUser, display }) => {
   return (
     <div>
       <nav className="navbar navbar-expand-sm navbar-dark bg-dark mb-4">
@@ -31,8 +31,13 @@ const Navbar = ({ signoutUser }) => {
                 </Link>
               </li>
             </ul>
-            {isTokenValid() === true ? (
+            {isTokenValid() === true && display ? (
               <ul className="navbar-nav ml-auto">
+                <li className="nav-item">
+                  <Link className="nav-link" to="/feed">
+                    Post Feed
+                  </Link>
+                </li>
                 <li className="nav-item">
                   <Link className="nav-link" to="/dashboard">
                     Dashboard
@@ -77,7 +82,15 @@ const Navbar = ({ signoutUser }) => {
 Navbar.proptypes = {
   signoutUser: func.isRequired
 };
+Navbar.defaultProps = {
+  display: true
+};
+function mapStateToProps({ success }) {
+  return {
+    display: success.display
+  };
+}
 export default connect(
-  null,
+  mapStateToProps,
   { signoutUser: actions.signoutUser }
 )(Navbar);

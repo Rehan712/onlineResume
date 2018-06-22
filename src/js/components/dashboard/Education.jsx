@@ -4,7 +4,7 @@ import * as actions from "../../actions";
 import Moment from "react-moment";
 import { arrayOf, func, any } from "prop-types";
 
-const Education = ({ education, deleteEducation }) => {
+const Education = ({ education, deleteEducation, getProfile }) => {
   const renderData =
     education.length &&
     education.map(item => {
@@ -23,7 +23,10 @@ const Education = ({ education, deleteEducation }) => {
           </td>
           <td>
             <button
-              onClick={() => deleteEducation(item._id)}
+              onClick={() => {
+                deleteEducation(item._id);
+                setTimeout(() => getProfile(), 2000);
+              }}
               class="btn btn-danger"
             >
               Delete
@@ -65,5 +68,8 @@ Education.propTypes = {
 
 export default connect(
   null,
-  { deleteEducation: actions.deleteEducation }
+  {
+    deleteEducation: actions.deleteEducation,
+    getProfile: actions.getCurrentProfile
+  }
 )(Education);

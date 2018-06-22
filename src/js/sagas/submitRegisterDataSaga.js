@@ -9,6 +9,7 @@ export default function* submitRegisterDataSaga(action) {
   try {
     yield call(api.submitRegisterApi, data);
     yield put(actions.submitRegisterDataSuccess());
+    alert("Submit User Successfully");
     yield put(actions.resetSignUp());
   } catch (e) {
     yield put(actions.submitRegisterDataError(e.response.data));

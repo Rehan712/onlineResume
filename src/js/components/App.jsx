@@ -8,6 +8,11 @@ import Register from "./auth/Register";
 import DashboardHome from "./dashboard/DashboardHome";
 import Profiles from "./profiles/Profiles";
 import Profile from "./profile/Profile";
+import Posts from "./posts/Posts";
+import Post from "./post/Post";
+import CreateProfile from "./createProfile/CreateProfile";
+import AddEducation from "./addCredentials/AddEducation";
+import AddExperience from "./addCredentials/AddExperience";
 // import CreateProfile from "./createProfile/CreateProfile";
 
 class App extends React.Component {
@@ -23,12 +28,32 @@ class App extends React.Component {
           <Route exact path="/dashboard/Profile" component={DashboardHome} />
           <Route path="/allProfiles" component={Profiles} />
           <Route path="/profile/:handle" component={Profile} />
-
-          {/* <Route
+          <Route path="/feed" component={Posts} />
+          <Route path="/post/:id" component={Post} />
+          <Route
             exact
             path="/dashboard/createProfile"
-            component={CreateProfile}
-          /> */}
+            render={() => {
+              return <CreateProfile createEdit="Create" />;
+            }}
+          />
+          <Route
+            exact
+            path="/dashboard/editProfile"
+            render={() => {
+              return <CreateProfile createEdit="Edit" />;
+            }}
+          />
+          <Route
+            exact
+            path="/dashboard/addExperience"
+            component={AddExperience}
+          />
+          <Route
+            exact
+            path="/dashboard/addEducation"
+            component={AddEducation}
+          />
         </Switch>
         <Footer />
       </div>

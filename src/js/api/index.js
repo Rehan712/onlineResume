@@ -104,3 +104,113 @@ export async function getProfileHandleApi(handle) {
   const res = await axios.get(`/api/profile/handle/${handle}`);
   return res;
 }
+
+export async function submitPostApi(data) {
+  const token = localStorage.getItem("token");
+  const res = await axios.post("/api/post", data, {
+    headers: {
+      Authorization: token
+    }
+  });
+  console.log("this is response", res.data);
+  return res.data;
+}
+
+export async function getPostsApi() {
+  const token = localStorage.getItem("token");
+  const res = await axios.get("/api/post/all", {
+    headers: {
+      Authorization: token
+    }
+  });
+  console.log("this is response", res.data);
+  return res.data;
+}
+
+export async function deletePostApi(id) {
+  const token = localStorage.getItem("token");
+  const res = await axios.delete(`/api/post/${id}`, {
+    headers: {
+      Authorization: token
+    }
+  });
+  console.log("this is response", res.data);
+  return res.data;
+}
+
+export async function addLikePostApi(id) {
+  const token = localStorage.getItem("token");
+  console.log("this is id in addLike ", id);
+  const axiosInstance = axios.create({
+    baseURL: process.env.REACT_APP_BACKEND_HOST,
+    headers: { Authorization: token }
+  });
+  const res = await axiosInstance.post(`/api/post/like/${id}`, {
+    headers: {
+      Authorization: token
+    }
+  });
+  console.log("this is response", res.data);
+  return res.data;
+}
+
+export async function removeLikePostApi(id) {
+  const token = localStorage.getItem("token");
+  const axiosInstance = axios.create({
+    baseURL: process.env.REACT_APP_BACKEND_HOST,
+    headers: { Authorization: token }
+  });
+  const res = await axiosInstance.post(`/api/post/dislike/${id}`, {
+    headers: {
+      Authorization: token
+    }
+  });
+  console.log("this is response", res.data);
+  return res.data;
+}
+
+export async function addCommentPostApi(id, data) {
+  console.log("this is the arguments in addComment", arguments);
+  const token = localStorage.getItem("token");
+  const axiosInstance = axios.create({
+    baseURL: process.env.REACT_APP_BACKEND_HOST,
+    headers: { Authorization: token }
+  });
+  const res = await axiosInstance.post(`/api/post/comment/${id}`, data, {
+    headers: {
+      Authorization: token
+    }
+  });
+  console.log("this is response", res.data);
+  return res.data;
+}
+
+export async function removeCommentPostApi(id, commentId) {
+  const token = localStorage.getItem("token");
+  const axiosInstance = axios.create({
+    baseURL: process.env.REACT_APP_BACKEND_HOST,
+    headers: { Authorization: token }
+  });
+  const res = await axiosInstance.post(`/api/post/comment/${id}/${commentId}`, {
+    headers: {
+      Authorization: token
+    }
+  });
+  console.log("this is response", res.data);
+  return res.data;
+}
+
+export async function getSinglePostApi(id) {
+  const token = localStorage.getItem("token");
+  const axiosInstance = axios.create({
+    baseURL: process.env.REACT_APP_BACKEND_HOST,
+    headers: { Authorization: token }
+  });
+  const res = await axiosInstance.get(`/api/post/${id}`, {
+    headers: {
+      Authorization: token
+    }
+  });
+  console.log("this is response", res.data);
+  return res.data;
+}

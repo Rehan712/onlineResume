@@ -176,7 +176,9 @@ router.post(
         current: req.body.current
       };
       profile.experience.unshift(newExp);
-      profile.save().then(exp => res.json(exp));
+      profile
+        .save()
+        .then(exp => res.json({ success: "Data Sent Successfully" }));
     });
   }
 );

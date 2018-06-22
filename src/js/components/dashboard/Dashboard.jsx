@@ -12,8 +12,7 @@ import { shape, func, arrayOf, any, string } from "prop-types";
 
 class Dashboard extends Component {
   render() {
-    const { profileData, deleteProfile } = this.props;
-    console.log("this is profile data", profileData);
+    const { profileData, deleteProfile, errors } = this.props;
     return (
       // <!-- Dashboard -->
       <div>
@@ -22,7 +21,11 @@ class Dashboard extends Component {
             <div className="row">
               <div className="col-md-12">
                 <h1 className="display-4">Dashboard</h1>
-
+                {Object.keys(errors).length ? (
+                  <div className="invalid-feedback">{errors.message}</div>
+                ) : (
+                  ""
+                )}
                 {profileData.error && profileData.error.message ? (
                   <div>
                     <div>
@@ -84,9 +87,10 @@ class Dashboard extends Component {
   }
 }
 
-function mapStateToProps({ profileData }) {
+function mapStateToProps({ profileData, errors }) {
   return {
-    profileData
+    profileData,
+    errors
   };
 }
 

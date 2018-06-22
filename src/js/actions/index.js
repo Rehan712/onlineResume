@@ -414,9 +414,10 @@ export function submitExperienceDataAttempt() {
   };
 }
 
-export function submitExperienceDataSuccess() {
+export function submitExperienceDataSuccess(res) {
   return {
-    type: types.SUBMIT_EXPERIENCE_DATA_SUCCESS
+    type: types.SUBMIT_EXPERIENCE_DATA_SUCCESS,
+    payload: res
   };
 }
 
@@ -523,9 +524,10 @@ export function submitEducationDataAttempt() {
   };
 }
 
-export function submitEducationDataSuccess() {
+export function submitEducationDataSuccess(res) {
   return {
-    type: types.SUBMIT_EDUCATION_DATA_SUCCESS
+    type: types.SUBMIT_EDUCATION_DATA_SUCCESS,
+    payload: res
   };
 }
 
@@ -618,5 +620,244 @@ export function getProfileHandleFail(error) {
   return {
     type: types.GET_PROFILE_HANDLE_FAIL,
     payload: error
+  };
+}
+
+//Submit Post Actions
+
+export function submitPost(id) {
+  return {
+    type: types.SUBMIT_POST,
+    payload: id
+  };
+}
+export function submitPostAttempt() {
+  return {
+    type: types.SUBMIT_POST_ATTEMPT
+  };
+}
+
+export function submitPostSuccess() {
+  return {
+    type: types.SUBMIT_POST_SUCCESS
+  };
+}
+export function submitPostError(error) {
+  return {
+    type: types.SUBMIT_POST_FAIL,
+    payload: error
+  };
+}
+
+// Change Post Actions
+
+export function changePost(value) {
+  return {
+    type: types.CHANGE_POST,
+    payload: value
+  };
+}
+export function resetPost(value) {
+  return {
+    type: types.RESET_POST,
+    payload: value
+  };
+}
+
+//Get Posts Post Actions
+
+export function getPosts() {
+  return {
+    type: types.GET_POSTS
+  };
+}
+export function getPostsAttempt() {
+  return {
+    type: types.GET_POSTS_ATTEMPT
+  };
+}
+
+export function getPostsSuccess(data) {
+  return {
+    type: types.GET_POSTS_SUCCESS,
+    payload: data
+  };
+}
+export function getPostsError(error) {
+  return {
+    type: types.GET_POSTS_FAIL,
+    payload: error
+  };
+}
+
+//Delete Posts Post Actions
+
+export function deletePost(id) {
+  return {
+    type: types.DELETE_POST,
+    payload: id
+  };
+}
+export function deletePostAttempt() {
+  return {
+    type: types.DELETE_POST_ATTEMPT
+  };
+}
+
+export function deletePostSuccess() {
+  return {
+    type: types.DELETE_POST_SUCCESS
+  };
+}
+export function deletePostError(error) {
+  return {
+    type: types.DELETE_POST_FAIL,
+    payload: error
+  };
+}
+
+//Add Like Posts Post Actions
+
+export function addLikePost(id) {
+  return {
+    type: types.ADD_LIKE_POST,
+    payload: id
+  };
+}
+export function addLikePostAttempt() {
+  return {
+    type: types.ADD_LIKE_POST_ATTEMPT
+  };
+}
+
+export function addLikePostSuccess() {
+  return {
+    type: types.ADD_LIKE_POST_SUCCESS
+  };
+}
+export function addLikePostError(error) {
+  return {
+    type: types.ADD_LIKE_POST_FAIL,
+    payload: error
+  };
+}
+
+//Remove Like Posts Post Actions
+
+export function removeLikePost(id) {
+  return {
+    type: types.REMOVE_LIKE_POST,
+    payload: id
+  };
+}
+export function removeLikePostAttempt() {
+  return {
+    type: types.REMOVE_LIKE_POST_ATTEMPT
+  };
+}
+
+export function removeLikePostSuccess() {
+  return {
+    type: types.REMOVE_LIKE_POST_SUCCESS
+  };
+}
+export function removeLikePostError(error) {
+  return {
+    type: types.REMOVE_LIKE_POST_FAIL,
+    payload: error
+  };
+}
+
+//Add Comment Posts Post Actions
+
+export function addCommentPost(id, data) {
+  return {
+    type: types.ADD_COMMENT_POST,
+    payload: { id, data }
+  };
+}
+export function addCommentPostAttempt() {
+  return {
+    type: types.ADD_COMMENT_POST_ATTEMPT
+  };
+}
+
+export function addCommentPostSuccess() {
+  return {
+    type: types.ADD_COMMENT_POST_SUCCESS
+  };
+}
+export function addCommentPostError(error) {
+  return {
+    type: types.ADD_COMMENT_POST_FAIL,
+    payload: error
+  };
+}
+
+//Remove Commet Posts Post Actions
+
+export function removeCommentPost(id, commentId) {
+  return {
+    type: types.REMOVE_COMMENT_POST,
+    payload: { id, commentId }
+  };
+}
+export function removeCommentPostAttempt() {
+  return {
+    type: types.REMOVE_COMMENT_POST_ATTEMPT
+  };
+}
+
+export function removeCommentPostSuccess() {
+  return {
+    type: types.REMOVE_COMMENT_POST_SUCCESS
+  };
+}
+export function removeCommentPostError(error) {
+  return {
+    type: types.REMOVE_COMMENT_POST_FAIL,
+    payload: error
+  };
+}
+
+//Get Single Posts Post Actions
+
+export function getSinglePost(id) {
+  return {
+    type: types.GET_SINGLE_POST,
+    payload: id
+  };
+}
+export function getSinglePostAttempt() {
+  return {
+    type: types.GET_SINGLE_POST_ATTEMPT
+  };
+}
+
+export function getSinglePostSuccess(data) {
+  return {
+    type: types.GET_SINGLE_POST_SUCCESS,
+    payload: data
+  };
+}
+export function getSinglePostError(error) {
+  return {
+    type: types.GET_SINGLE_POST_FAIL,
+    payload: error
+  };
+}
+
+// CHANGE COMMENT ACTIONS
+
+export function changeComment(value) {
+  return {
+    type: types.CHANGE_COMMENT,
+    payload: value
+  };
+}
+
+export function resetComment() {
+  return {
+    type: types.RESET_COMMENT
   };
 }

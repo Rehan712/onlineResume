@@ -13,6 +13,14 @@ import deleteExperienceSaga from "./deleteExperienceSaga";
 import deleteEducationSaga from "./deleteEducationSaga";
 import getAllProfileSaga from "./getAllProfilesSaga";
 import getProfileHandleSaga from "./getProfileHandleSaga";
+import submitPostSaga from "./submitPostSaga";
+import getPostsSaga from "./getPostsSaga";
+import deletePostSaga from "./deletePostSaga";
+import addLikePostSaga from "./addLikePostSaga";
+import removeLikePostSaga from "./removeLikePostSaga";
+import getSinglePostSaga from "./getSinglePostSaga";
+import addCommentPostSaga from "./addCommentPostSaga";
+import removeCommentPostSaga from "./removeCommentPostSaga";
 
 function* watchSubmitRegisterData() {
   yield takeLatest(types.SUBMIT_REGISTER_DATA, submitRegisterSaga);
@@ -64,6 +72,30 @@ function* watchGetAllProfileData() {
 function* watchGetProfileHandleData() {
   yield takeLatest(types.GET_PROFILE_HANDLE, getProfileHandleSaga);
 }
+function* watchSubmitPost() {
+  yield takeLatest(types.SUBMIT_POST, submitPostSaga);
+}
+function* watchGetPost() {
+  yield takeLatest(types.GET_POSTS, getPostsSaga);
+}
+function* watchDeletePost() {
+  yield takeLatest(types.DELETE_POST, deletePostSaga);
+}
+function* watchAddLikePost() {
+  yield takeLatest(types.ADD_LIKE_POST, addLikePostSaga);
+}
+function* watchRemoveLikePost() {
+  yield takeLatest(types.REMOVE_LIKE_POST, removeLikePostSaga);
+}
+function* watchGetSinglePost() {
+  yield takeLatest(types.GET_SINGLE_POST, getSinglePostSaga);
+}
+function* watchAddCommentPost() {
+  yield takeLatest(types.ADD_COMMENT_POST, addCommentPostSaga);
+}
+function* watchRemoveCommentPost() {
+  yield takeLatest(types.REMOVE_COMMENT_POST, removeCommentPostSaga);
+}
 
 export default function* rootSaga() {
   yield all([
@@ -78,7 +110,15 @@ export default function* rootSaga() {
     fork(watchDeleteExperienceData),
     fork(watchDeleteEducationData),
     fork(watchGetAllProfileData),
-    fork(watchGetProfileHandleData)
+    fork(watchGetProfileHandleData),
+    fork(watchSubmitPost),
+    fork(watchGetPost),
+    fork(watchDeletePost),
+    fork(watchAddLikePost),
+    fork(watchRemoveLikePost),
+    fork(watchGetSinglePost),
+    fork(watchAddCommentPost),
+    fork(watchRemoveCommentPost)
     //fork(watchDeleteProfileData)
   ]);
 }

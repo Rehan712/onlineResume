@@ -8,6 +8,12 @@ import inputExperienceReducer from "./inputExperienceReducer";
 import inputEducationReducer from "./inputEducationReducer";
 import getAllProfileReducer from "./getAllProfileReducer";
 import getProfileHandleReducer from "./getProfileHandleReducer";
+import inputPostReducer from "./inputPostReducer";
+import getPostsReducer from "./getPostsReducer";
+import inputCommentReducer from "./inputCommentReducer";
+import getSinglePostReducer from "./getSinglePostReducer";
+import failErrorsReducer from "./failErrorsReducer";
+import successReducer from "./successReducer";
 
 const rootReducer = combineReducers({
   inputSignupData: inputSignupReducer,
@@ -18,7 +24,13 @@ const rootReducer = combineReducers({
   inputExperienceData: inputExperienceReducer,
   inputEducationData: inputEducationReducer,
   allProfilesData: getAllProfileReducer,
-  getProfileHandle: getProfileHandleReducer
+  getProfileHandle: getProfileHandleReducer,
+  inputPost: inputPostReducer,
+  postsData: getPostsReducer,
+  inputComment: inputCommentReducer,
+  singlePostData: getSinglePostReducer,
+  errors: failErrorsReducer,
+  success: successReducer
 });
 
 export default rootReducer;

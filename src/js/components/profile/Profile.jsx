@@ -16,6 +16,7 @@ class Profile extends Component {
   }
   render() {
     const profile = this.props.profileDataHandle.data;
+    const errors = this.props.errors;
     const headerData = Object.keys(profile).length ? (
       <div class="profile">
         <div class="container">
@@ -39,8 +40,13 @@ class Profile extends Component {
     );
 
     return (
-      <div>
+      <div className="profile">
         {headerData}
+        {Object.keys(errors).length ? (
+          <div className="invalid-feedback">{errors.message}</div>
+        ) : (
+          ""
+        )}
         {Object.keys(profile).length && <ProfileAbout profile={profile} />}
         {Object.keys(profile).length && (
           <ProfileCreds
@@ -58,7 +64,8 @@ class Profile extends Component {
 
 function mapStateToProps(state) {
   return {
-    profileDataHandle: state.getProfileHandle
+    profileDataHandle: state.getProfileHandle,
+    errors: state.errors
   };
 }
 Profile.propTypes = {

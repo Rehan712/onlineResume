@@ -10,6 +10,7 @@ export default function* submitProfileDataSaga(action) {
   try {
     const res = yield call(api.submitProfileApi, data);
     yield put(actions.submitProfileDataSuccess());
+    alert("Submit Profile Successfully");
     yield put(actions.resetProfile());
     yield put(push("/dashboard"));
   } catch (e) {

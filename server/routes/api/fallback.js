@@ -20,6 +20,24 @@ module.exports = app => {
   app.get("/profile", (req, res) => {
     res.sendFile(require("path").join(__dirname, "../../../dist/index.html"));
   });
+  app.get("/feed", (req, res) => {
+    res.sendFile(require("path").join(__dirname, "../../../dist/index.html"));
+  });
+  app.get("/dashboard/editProfile", (req, res) => {
+    res.sendFile(require("path").join(__dirname, "../../../dist/index.html"));
+  });
+  app.get("/dashboard/addEducation", (req, res) => {
+    res.sendFile(require("path").join(__dirname, "../../../dist/index.html"));
+  });
+  app.get("/dashboard/addExperience", (req, res) => {
+    res.sendFile(require("path").join(__dirname, "../../../dist/index.html"));
+  });
+  app.get("/post/:id", (req, res) => {
+    res.sendFile(require("path").join(__dirname, "../../../dist/index.html"));
+  });
+  app.get("/profile/:handle", (req, res) => {
+    res.sendFile(require("path").join(__dirname, "../../../dist/index.html"));
+  });
 
   //   app.get("/register", (req, res) => {
   //     res.sendFile(require("path").join(__dirname, "../../../dist/index.html"));

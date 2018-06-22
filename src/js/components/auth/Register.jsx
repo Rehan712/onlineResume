@@ -19,10 +19,11 @@ class Register extends Component {
       changeEmail,
       changeConfirmPassword,
       submitRegisterData,
-      inputData
+      inputData,
+      submitErrors,
+      getProfile
     } = this.props;
     const { errors } = inputData;
-    console.log("this is errors from register", errors);
     return (
       <div>
         <div className="register">
@@ -30,6 +31,11 @@ class Register extends Component {
             <div className="row">
               <div className="col-md-8 m-auto">
                 <h1 className="display-4 text-center">Sign Up</h1>
+                {Object.keys(submitErrors).length ? (
+                  <div className="invalid-feedback">{submitErrors.message}</div>
+                ) : (
+                  ""
+                )}
                 <p className="lead text-center">
                   Create your DevConnector account
                 </p>
@@ -79,7 +85,7 @@ class Register extends Component {
                     className="btn btn-info btn-block mt-4"
                     onClick={() => {
                       submitRegisterData(inputData);
-                      this.props.getRegisterData();
+                      setTimeout(() => getProfile(), 2000);
                     }}
                   >
                     Submit
@@ -97,7 +103,8 @@ class Register extends Component {
 function mapStateToProps(state) {
   return {
     inputData: state.inputSignupData,
-    registerData: state.registerData
+    registerData: state.registerData,
+    submitErrors: state.errors
   };
 }
 
@@ -109,6 +116,7 @@ export default connect(
     changePassword: actions.changePassword,
     changeConfirmPassword: actions.changeConfirmPassword,
     resetSignup: actions.resetSignUp,
-    submitRegisterData: actions.submitRegisterData
+    submitRegisterData: actions.submitRegisterData,
+    getProfile: actions.getCurrentProfile
   }
 )(Register);

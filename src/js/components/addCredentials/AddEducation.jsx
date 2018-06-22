@@ -17,7 +17,9 @@ class AddExperience extends Component {
       changeFrom,
       changeCurrent,
       changeDescription,
-      submitEducation
+      submitEducation,
+      submitErrors,
+      getProfile
     } = this.props;
     const {
       location,
@@ -32,6 +34,11 @@ class AddExperience extends Component {
     return (
       <div class="section add-experience">
         <div class="container">
+          {Object.keys(submitErrors).length ? (
+            <div className="invalid-feedback">{submitErrors.message}</div>
+          ) : (
+            ""
+          )}
           <div class="row">
             <div class="col-md-8 m-auto">
               <Link to="/dashboard" class="btn btn-light">
@@ -100,7 +107,10 @@ class AddExperience extends Component {
                 />
                 <Button
                   class="btn btn-info btn-block mt-4"
-                  onClick={() => submitEducation(inputData)}
+                  onClick={() => {
+                    submitEducation(inputData);
+                    setTimeout(() => getProfile(), 2000);
+                  }}
                 >
                   Submit
                 </Button>
@@ -115,7 +125,8 @@ class AddExperience extends Component {
 
 function mapStateToProps(state) {
   return {
-    inputData: state.inputEducationData
+    inputData: state.inputEducationData,
+    submitErrors: state.errors
   };
 }
 
@@ -129,6 +140,7 @@ export default connect(
     changeFrom: actions.changeEducationFrom,
     changeCurrent: actions.changeEducationCurrent,
     changeDescription: actions.changeEducationDescription,
-    submitEducation: actions.submitEducationData
+    submitEducation: actions.submitEducationData,
+    getProfile: actions.getCurrentProfile
   }
 )(AddExperience);
