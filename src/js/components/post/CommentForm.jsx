@@ -10,8 +10,7 @@ class PostForm extends React.Component {
       addCommentPost,
       changeComment,
       postId,
-      errors,
-      getSinglePost
+      errors
     } = this.props;
     return (
       <div className="post-form mb-3">
@@ -34,7 +33,6 @@ class PostForm extends React.Component {
               <div
                 onClick={() => {
                   addCommentPost(postId, inputComment);
-                  setTimeout(() => getSinglePost(postId), 2000);
                 }}
                 className="btn btn-dark"
               >
@@ -59,7 +57,6 @@ export default connect(
   mapStateToProps,
   {
     changeComment: actions.changeComment,
-    addCommentPost: actions.addCommentPost,
-    getSinglePost: actions.getSinglePost
+    addCommentPost: actions.addCommentPost
   }
 )(PostForm);

@@ -8,8 +8,8 @@ export default function* deletePostSaga(action) {
   if (confirm("Are you sure to permanent delete Post")) {
     yield put(actions.deletePostAttempt());
     try {
-      yield call(api.deletePostApi, id);
-      yield put(actions.deletePostSuccess());
+      const res = yield call(api.deletePostApi, id);
+      yield put(actions.deletePostSuccess(res));
       alert("Post Deleted Successfuly");
     } catch (e) {
       yield put(actions.deletePostError(e.response.data));

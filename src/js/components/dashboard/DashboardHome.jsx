@@ -6,6 +6,7 @@ import { connect } from "react-redux";
 import * as actions from "../../actions";
 import AddExperience from "../addCredentials/AddExperience";
 import AddEducation from "../addCredentials/AddEducation";
+import EditProfile from "../createProfile/EditProfile";
 import { shape, func, arrayOf, any, string } from "prop-types";
 
 class DashboardHome extends React.Component {

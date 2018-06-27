@@ -2,20 +2,44 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import * as actions from "../../actions";
-import axios from "axios";
+import { ENGINE_METHOD_DIGESTS } from "constants";
 
 class PostItem extends Component {
+  state = {
+    auth: ""
+  };
+
+  shouldComponentUpdate(nextProps) {
+    if (this.props.post !== nextProps.post) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (JSON.stringify(this.props.auth) !== JSON.stringify(nextProps.auth)) {
+      // Check if it's a new user, you can also use some unique, like the ID
+      this.setState({
+        auth: nextProps.auth
+      });
+    }
+  }
+
   render() {
     const {
       post,
-      auth,
       deletePost,
       addLikePost,
       removeLikePost,
       showActions,
-      errors,
-      getPosts
+      errors
     } = this.props;
+    this.setState({
+      auth: this.props.auth
+    });
+    const { auth } = this.state;
+    console.log("this is auth in PostItem", auth);
     return (
       <div>
         <div class="posts">
@@ -41,7 +65,6 @@ class PostItem extends Component {
                       class="btn btn-light mr-1"
                       onClick={() => {
                         addLikePost(post._id);
-                        setTimeout(() => getPosts(), 2000);
                       }}
                     >
                       <i class="text-info fas fa-thumbs-up" />
@@ -54,7 +77,6 @@ class PostItem extends Component {
                       class="btn btn-light mr-1"
                       onClick={() => {
                         removeLikePost(post._id);
-                        setTimeout(() => getPosts(), 2000);
                       }}
                     >
                       <i class="text-secondary fas fa-thumbs-down" />
@@ -62,12 +84,11 @@ class PostItem extends Component {
                     <Link to={`/post/${post._id}`} class="btn btn-info mr-1">
                       Comments
                     </Link>
-                    {post.user === auth._id ? (
+                    {post.user === auth ? (
                       <button
                         class="btn btn-danger mr-1"
                         onClick={() => {
                           deletePost(post._id);
-                          setTimeout(() => getPosts(), 2000);
                         }}
                       >
                         <i class="fas fa-times" />
@@ -75,12 +96,12 @@ class PostItem extends Component {
                     ) : (
                       ""
                     )}
+                    {Object.keys(errors).length ? (
+                      <div className="invalid-feedback">{errors.message}</div>
+                    ) : (
+                      ""
+                    )}
                   </span>
-                )}
-                {Object.keys(errors).length ? (
-                  <div className="invalid-feedback">{errors.message}</div>
-                ) : (
-                  ""
                 )}
               </div>
             </div>
@@ -95,7 +116,6 @@ PostItem.defaultProps = {
 };
 function mapStateToProps(state) {
   return {
-    auth: state.profileData.data.user,
     errors: state.errors
   };
 }
@@ -104,7 +124,6 @@ export default connect(
   {
     deletePost: actions.deletePost,
     addLikePost: actions.addLikePost,
-    removeLikePost: actions.removeLikePost,
-    getPosts: actions.getPosts
+    removeLikePost: actions.removeLikePost
   }
 )(PostItem);

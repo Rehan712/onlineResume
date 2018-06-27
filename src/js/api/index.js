@@ -75,6 +75,10 @@ export async function deleteProfileApi() {
 
 export async function deleteEducationApi(id) {
   const token = localStorage.getItem("token");
+  // const axiosInstance = axios.delete({
+  //   baseURL: process.env.REACT_APP_BACKEND_HOST,
+  //   headers: { Authorization: token }
+  // });
   const res = await axios.delete(`/api/profile/education/${id}`, {
     headers: {
       Authorization: token
@@ -86,6 +90,10 @@ export async function deleteEducationApi(id) {
 
 export async function deleteExperienceApi(id) {
   const token = localStorage.getItem("token");
+  // const axiosInstance = axios.delete({
+  //   baseURL: process.env.REACT_APP_BACKEND_HOST,
+  //   headers: { Authorization: token }
+  // });
   const res = await axios.delete(`/api/profile/experience/${id}`, {
     headers: {
       Authorization: token

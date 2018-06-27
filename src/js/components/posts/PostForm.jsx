@@ -28,7 +28,8 @@ class PostForm extends React.Component {
               <div
                 onClick={() => {
                   submitPost(inputPost);
-                  setTimeout(() => getPosts(), 2000);
+                  // !Object.keys(errors).length &&
+                  //   setTimeout(() => getPosts(), 2000);
                 }}
                 className="btn btn-dark"
               >

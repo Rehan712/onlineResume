@@ -11,6 +11,7 @@ export default function* submitEducationDataSaga(action) {
     const res = yield call(api.submitEducationApi, data);
     yield put(actions.submitEducationDataSuccess(res));
     alert("Submit Education Successfuly");
+    yield put(push("/dashboard"));
     yield put(actions.resetEducation());
   } catch (e) {
     yield put(actions.submitEducationDataError(e.response.data));

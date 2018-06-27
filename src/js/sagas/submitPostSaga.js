@@ -7,8 +7,9 @@ export default function* submitPostSaga(action) {
   const data = action.payload;
   yield put(actions.submitPostAttempt());
   try {
-    yield call(api.submitPostApi, data);
-    yield put(actions.submitPostSuccess());
+    const res = yield call(api.submitPostApi, data);
+    console.log("this is response from submitPostApi", res);
+    yield put(actions.submitPostSuccess(res));
     alert("Submit Post Successfuly");
     yield put(actions.resetPost());
   } catch (e) {

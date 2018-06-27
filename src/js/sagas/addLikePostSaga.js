@@ -6,8 +6,8 @@ export default function* addLikePostSaga(action) {
   const id = action.payload;
   yield put(actions.addLikePostAttempt());
   try {
-    yield call(api.addLikePostApi, id);
-    yield put(actions.addLikePostSuccess());
+    const res = yield call(api.addLikePostApi, id);
+    yield put(actions.addLikePostSuccess(res));
   } catch (e) {
     yield put(actions.addLikePostError(e.response.data));
   }

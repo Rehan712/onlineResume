@@ -40,6 +40,26 @@ export default function(state = {}, action) {
       return action.payload;
     case types.GET_CURRENT_PROFILE_FAIL:
       return action.payload;
+    case types.GET_CURRENT_PROFILE_SUCCESS:
+      return {};
+    case types.DELETE_EDUCATION_SUCCESS:
+      return {};
+    case types.DELETE_EXPERIENCE_SUCCESS:
+      return {};
+    case types.ADD_LIKE_POST_SUCCESS:
+      return {};
+    case types.REMOVE_LIKE_POST_SUCCESS:
+      return {};
+    case types.ADD_COMMENT_POST_SUCCESS:
+      return {};
+    case types.REMOVE_COMMENT_POST_SUCCESS:
+      return {};
+    case types.SUBMIT_POST_SUCCESS:
+      return {};
+    case types.GET_POSTS_SUCCESS:
+      return {};
+    case types.GET_SINGLE_POST_SUCCESS:
+      return {};
     default:
       return state;
   }

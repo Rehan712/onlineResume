@@ -5,6 +5,10 @@ import Button from "@material-ui/core/Button";
 import TextFieldBootstrap from "../reuseableComponents/TextFieldBootstrap";
 
 class Login extends Component {
+  handleSubmit = e => {
+    e.preventDefault();
+    this.props.submitLoginData(this.props.inputData);
+  };
   render() {
     const {
       inputData,
@@ -35,7 +39,7 @@ class Login extends Component {
                     {errors.message}
                   </h3>
                 )}
-                <form action="dashboard.html">
+                <form onSubmit={this.handleSubmit}>
                   <TextFieldBootstrap
                     type="email"
                     onChange={e => changeEmail(e.target.value)}
@@ -55,7 +59,11 @@ class Login extends Component {
                   <Button
                     variant="raised"
                     className="btn btn-info btn-block mt-4"
+                    type="submit"
                     onClick={() => submitLoginData(inputData)}
+                    ref={el => {
+                      this.submit = el;
+                    }}
                   >
                     Submit
                   </Button>

@@ -8,8 +8,8 @@ export default function* deleteEducationSaga(action) {
   if (confirm("Are you confirm to permanent Delete Education")) {
     yield put(actions.deleteEducationAttempt());
     try {
-      yield call(api.deleteEducationApi, id);
-      yield put(actions.deleteEducationSuccess());
+      const res = yield call(api.deleteEducationApi, id);
+      yield put(actions.deleteEducationSuccess(res));
       alert("Education Deleted Successfuly");
       yield put(push("/dashboard"));
     } catch (e) {

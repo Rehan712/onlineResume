@@ -27,7 +27,7 @@ export default function(state = initial, action) {
     case types.CHANGE_EDUCATION_DESCRIPTION:
       return { ...state, description: action.payload };
     case types.CHANGE_EDUCATION_CURRENT:
-      return { ...state, current: action.payload };
+      return { ...state, current: action.payload, to: "" };
     case types.RESET_EDUCATION:
       return initial;
     case types.SUBMIT_EDUCATION_DATA_FAIL:

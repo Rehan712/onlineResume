@@ -6,8 +6,9 @@ export default function* addCommentPostSaga(action) {
   const { id, data } = action.payload;
   yield put(actions.addCommentPostAttempt());
   try {
-    yield call(api.addCommentPostApi, id, data);
-    yield put(actions.addCommentPostSuccess());
+    const response = yield call(api.addCommentPostApi, id, data);
+    yield put(actions.addCommentPostSuccess(response));
+    yield put(actions.resetComment());
   } catch (e) {
     yield put(actions.addCommentPostError(e.response.data));
   }

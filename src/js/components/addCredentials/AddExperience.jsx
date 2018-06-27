@@ -50,7 +50,12 @@ class AddExperience extends Component {
                 past
               </p>
               <small class="d-block pb-3">* = required field</small>
-              <form>
+              <form
+                onSubmit={e => {
+                  e.preventDefault();
+                  submitExperience(inputData);
+                }}
+              >
                 <TextFieldBootstrap
                   placeholder="* Job Title"
                   value={title}
@@ -109,8 +114,8 @@ class AddExperience extends Component {
                   class="btn btn-info btn-block mt-4"
                   onClick={() => {
                     submitExperience(inputData);
-                    setTimeout(() => getProfile(), 2000);
                   }}
+                  type="submit"
                 >
                   Submit
                 </Button>

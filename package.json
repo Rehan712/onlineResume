@@ -5,6 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "prod": "webpack --config webpack.config.prod.js -p",
+    "dev": "webpack-dev-server --config webpack.config.dev.js",
+    "dev:node": "webpack --config webpack.config.dev.node.js",
     "start": "nodemon server/index.js"
   },
   "repository": {
@@ -31,6 +34,7 @@
     "bootstrap": "^4.1.1",
     "classnames": "^2.2.6",
     "express": "^4.16.3",
+    "express-history-api-fallback": "^2.2.1",
     "gravatar": "^1.6.0",
     "history": "^4.7.2",
     "jsonwebtoken": "^8.2.2",
@@ -59,8 +63,12 @@
     "babel-polyfill": "^6.26.0",
     "css-loader": "^0.28.11",
     "file-loader": "^1.1.11",
+    "glob-all": "^3.1.0",
     "image-webpack-loader": "^4.3.1",
+    "mini-css-extract-plugin": "^0.4.0",
     "node-sass": "^4.9.0",
+    "purify-css": "^1.2.5",
+    "purifycss-webpack": "^0.7.0",
     "sass-loader": "^7.0.3",
     "style-loader": "^0.21.0"
   }

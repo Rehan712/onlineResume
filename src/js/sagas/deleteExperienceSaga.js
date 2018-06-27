@@ -8,12 +8,13 @@ export default function* deleteExperienceSaga(action) {
   if (confirm("Are you confirm to permanent delete Experience")) {
     yield put(actions.deleteExperienceAttempt());
     try {
-      yield call(api.deleteExperienceApi, id);
-      yield put(actions.deleteExperienceSuccess());
+      const res = yield call(api.deleteExperienceApi, id);
+      yield put(actions.deleteExperienceSuccess(res));
       alert("Experience Deleted Successfuly");
       yield put(push("/dashboard"));
     } catch (e) {
-      yield put(actions.deleteExperienceError(e.response.data));
+      console.log("this is error from exp", e);
+      yield put(actions.deleteExperienceError(e));
     }
   }
 }

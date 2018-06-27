@@ -213,9 +213,12 @@ router.post(
               });
             }
 
-            removeIndex = post.comments
-              .map(item => item._id.toString() === req.params.commentId)
-              .indexOf();
+            console.log("this is comment id", req.params.commentId);
+
+            removeIndex = post.comments.filter(
+              item => item._id.toString() === req.params.commentId
+            )._id;
+            console.log("this is remove index", removeIndex);
             post.comments.splice(removeIndex, 1);
             post.save().then(post => res.json(post));
           }

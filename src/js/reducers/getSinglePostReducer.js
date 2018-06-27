@@ -12,6 +12,10 @@ export default function(state = initial, action) {
       return { ...state, isLoading: false, data: action.payload };
     case types.GET_SINGLE_POST_FAIL:
       return { ...state, isLoading: false, error: action.payload };
+    case types.ADD_COMMENT_POST_SUCCESS:
+      return { ...state, isLoading: false, data: action.payload };
+    case types.REMOVE_COMMENT_POST_SUCCESS:
+      return { ...state, isLoading: false, data: action.payload };
     default:
       return state;
   }

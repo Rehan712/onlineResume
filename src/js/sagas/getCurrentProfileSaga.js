@@ -8,7 +8,7 @@ export default function*() {
   try {
     const res = yield call(api.getCurrentProfileApi);
     yield put(actions.getCurrentProfileSuccess(res.data));
-    yield put(push("/dashboard"));
+    // yield put(push("/dashboard"));
   } catch (e) {
     yield put(actions.getCurrentProfileFail(e.response.data));
   }

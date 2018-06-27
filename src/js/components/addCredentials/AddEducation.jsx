@@ -50,7 +50,12 @@ class AddExperience extends Component {
                 past
               </p>
               <small class="d-block pb-3">* = required field</small>
-              <form>
+              <form
+                onSubmit={e => {
+                  e.preventDefault();
+                  submitEducation(inputData);
+                }}
+              >
                 <TextFieldBootstrap
                   placeholder="* Degree Name"
                   value={degree}
@@ -96,7 +101,7 @@ class AddExperience extends Component {
                     onChange={e => changeCurrent(e.target.checked)}
                   />
                   <label className="form-check-label" htmlFor="current">
-                    Current Job
+                    Current Education
                   </label>
                 </div>
                 <TextFieldAreaBootstrap
@@ -109,8 +114,8 @@ class AddExperience extends Component {
                   class="btn btn-info btn-block mt-4"
                   onClick={() => {
                     submitEducation(inputData);
-                    setTimeout(() => getProfile(), 2000);
                   }}
+                  type="submit"
                 >
                   Submit
                 </Button>

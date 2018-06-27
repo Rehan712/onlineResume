@@ -8,7 +8,7 @@ export default function* deleteProfileDataSaga() {
     yield put(actions.deleteProfileDataAttempt());
     try {
       yield call(api.deleteProfileApi);
-      yield put(actions.deleteProfileDataSuccess());
+      const res = yield put(actions.deleteProfileDataSuccess(res));
       alert("Profile Deleted Successfuly");
       yield put(push("/"));
     } catch (e) {

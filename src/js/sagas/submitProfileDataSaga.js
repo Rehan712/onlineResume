@@ -9,7 +9,7 @@ export default function* submitProfileDataSaga(action) {
   yield put(actions.submitProfileDataAttempt());
   try {
     const res = yield call(api.submitProfileApi, data);
-    yield put(actions.submitProfileDataSuccess());
+    yield put(actions.submitProfileDataSuccess(res));
     alert("Submit Profile Successfully");
     yield put(actions.resetProfile());
     yield put(push("/dashboard"));

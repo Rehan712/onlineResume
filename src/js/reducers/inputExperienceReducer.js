@@ -27,7 +27,7 @@ export default function(state = initial, action) {
     case types.CHANGE_EXPERIENCE_DESCRIPTION:
       return { ...state, description: action.payload };
     case types.CHANGE_EXPERIENCE_CURRENT:
-      return { ...state, current: action.payload };
+      return { ...state, current: action.payload, to: "" };
     case types.RESET_EXPERIENCE:
       return initial;
     case types.SUBMIT_EXPERIENCE_DATA_FAIL:

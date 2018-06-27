@@ -176,9 +176,7 @@ router.post(
         current: req.body.current
       };
       profile.experience.unshift(newExp);
-      profile
-        .save()
-        .then(exp => res.json({ success: "Data Sent Successfully" }));
+      profile.save().then(profile => res.json(profile));
     });
   }
 );
@@ -203,7 +201,7 @@ router.post(
         current: req.body.current
       };
       profile.education.unshift(newEdu);
-      profile.save().then(edu => res.json(edu));
+      profile.save().then(profile => res.json(profile));
     });
   }
 );
@@ -213,15 +211,22 @@ router.delete(
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
     Profile.findOne({ user: req.user.id }, (err, profile) => {
+      console.log("this is user Id", req.user.id);
       if (err) {
-        res.status(404).json(err);
+        res.status(404).json({ message: "user not found" });
       } else {
-        const removeIndex = profile.experience
-          .map(item => item._id)
-          .indexOf(req.params.id);
+        const removeIndex = profile.experience.filter(
+          item => item._id.toString() === req.params.id
+        )._id;
         profile.experience.splice(removeIndex, 1);
 
-        profile.save().then(profile => res.json(profile));
+        profile
+          .save()
+          .then(profile =>
+            res
+              .json(profile)
+              .catch(e => res.json({ message: "cannot delete the data" }))
+          );
       }
     });
   }
@@ -231,16 +236,20 @@ router.delete(
   "/education/:id",
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
+    console.log("this is id", req.params.id);
     Profile.findOne({ user: req.user.id }, (err, profile) => {
       if (err) {
-        res.status(404).json(err);
+        res.status(404).json({ message: "cannot delete the education" });
       } else {
-        const removeIndex = profile.education
-          .map(item => item._id)
-          .indexOf(req.params.id);
+        const removeIndex = profile.education.filter(
+          item => item._id.toString() === req.params.id
+        )._id;
         profile.education.splice(removeIndex, 1);
 
-        profile.save().then(profile => res.json(profile));
+        profile
+          .save()
+          .then(profile => res.json(profile))
+          .catch(e => res.json({ message: "cannot delete education" }));
       }
     });
   }

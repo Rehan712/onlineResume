@@ -35,7 +35,6 @@ sagaMiddleware.run(rootSaga);
 
 if (isTokenValid()) {
   store.dispatch(actions.submitLoginDataSuccess());
-  store.dispatch(push("/dashboard"));
 } else {
   store.dispatch(push("/"));
 }

@@ -4,7 +4,7 @@ import * as actions from "../../actions";
 import Moment from "react-moment";
 import { arrayOf, func, any } from "prop-types";
 
-const Education = ({ education, deleteEducation, getProfile }) => {
+const Education = ({ education, deleteEducation, errors }) => {
   const renderData =
     education.length &&
     education.map(item => {
@@ -25,13 +25,13 @@ const Education = ({ education, deleteEducation, getProfile }) => {
             <button
               onClick={() => {
                 deleteEducation(item._id);
-                setTimeout(() => getProfile(), 2000);
               }}
               class="btn btn-danger"
             >
               Delete
             </button>
           </td>
+          <td>{errors && Object.keys(errors).length ? errors.message : ""}</td>
         </tr>
       );
     });
@@ -66,10 +66,15 @@ Education.propTypes = {
   education: arrayOf(any).isRequired
 };
 
+function mapStateToProps({ errors }) {
+  return {
+    errors
+  };
+}
+
 export default connect(
-  null,
+  mapStateToProps,
   {
-    deleteEducation: actions.deleteEducation,
-    getProfile: actions.getCurrentProfile
+    deleteEducation: actions.deleteEducation
   }
 )(Education);

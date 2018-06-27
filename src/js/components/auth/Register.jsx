@@ -20,8 +20,7 @@ class Register extends Component {
       changeConfirmPassword,
       submitRegisterData,
       inputData,
-      submitErrors,
-      getProfile
+      submitErrors
     } = this.props;
     const { errors } = inputData;
     return (
@@ -45,7 +44,12 @@ class Register extends Component {
                   </h3>
                 )}
 
-                <form>
+                <form
+                  onSubmit={e => {
+                    e.preventDefault();
+                    submitRegisterData(inputData);
+                  }}
+                >
                   <TextFieldBoot
                     name="Name"
                     value={inputData.name}
@@ -83,10 +87,11 @@ class Register extends Component {
                   <Button
                     variant="raised"
                     className="btn btn-info btn-block mt-4"
-                    onClick={() => {
+                    onClick={e => {
+                      e.preventDefault();
                       submitRegisterData(inputData);
-                      setTimeout(() => getProfile(), 2000);
                     }}
+                    type="submit"
                   >
                     Submit
                   </Button>

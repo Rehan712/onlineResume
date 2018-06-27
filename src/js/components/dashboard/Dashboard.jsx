@@ -21,12 +21,13 @@ class Dashboard extends Component {
             <div className="row">
               <div className="col-md-12">
                 <h1 className="display-4">Dashboard</h1>
-                {Object.keys(errors).length ? (
+                {Object.keys(errors).length && profileData.data.length === 0 ? (
                   <div className="invalid-feedback">{errors.message}</div>
                 ) : (
                   ""
                 )}
-                {profileData.error && profileData.error.message ? (
+                {profileData.error &&
+                Object.keys(profileData.error).length !== 0 ? (
                   <div>
                     <div>
                       {profileData.isLoading === true ? (

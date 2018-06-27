@@ -295,9 +295,10 @@ export function submitProfileDataAttempt() {
   };
 }
 
-export function submitProfileDataSuccess() {
+export function submitProfileDataSuccess(res) {
   return {
-    type: types.SUBMIT_PROFILE_DATA_SUCCESS
+    type: types.SUBMIT_PROFILE_DATA_SUCCESS,
+    payload: res
   };
 }
 
@@ -322,9 +323,10 @@ export function deleteProfileDataAttempt() {
   };
 }
 
-export function deleteProfileDataSuccess() {
+export function deleteProfileDataSuccess(res) {
   return {
-    type: types.DELETE_PROFILE_DATA_SUCCESS
+    type: types.DELETE_PROFILE_DATA_SUCCESS,
+    payload: res
   };
 }
 
@@ -442,9 +444,10 @@ export function deleteExperienceAttempt() {
   };
 }
 
-export function deleteExperienceSuccess() {
+export function deleteExperienceSuccess(res) {
   return {
-    type: types.DELETE_EXPERIENCE_SUCCESS
+    type: types.DELETE_EXPERIENCE_SUCCESS,
+    payload: res
   };
 }
 export function deleteExperienceError(error) {
@@ -553,9 +556,10 @@ export function deleteEducationAttempt() {
   };
 }
 
-export function deleteEducationSuccess() {
+export function deleteEducationSuccess(res) {
   return {
-    type: types.DELETE_EDUCATION_SUCCESS
+    type: types.DELETE_EDUCATION_SUCCESS,
+    payload: res
   };
 }
 
@@ -637,9 +641,10 @@ export function submitPostAttempt() {
   };
 }
 
-export function submitPostSuccess() {
+export function submitPostSuccess(res) {
   return {
-    type: types.SUBMIT_POST_SUCCESS
+    type: types.SUBMIT_POST_SUCCESS,
+    payload: res
   };
 }
 export function submitPostError(error) {
@@ -704,9 +709,10 @@ export function deletePostAttempt() {
   };
 }
 
-export function deletePostSuccess() {
+export function deletePostSuccess(res) {
   return {
-    type: types.DELETE_POST_SUCCESS
+    type: types.DELETE_POST_SUCCESS,
+    payload: res
   };
 }
 export function deletePostError(error) {
@@ -782,9 +788,10 @@ export function addCommentPostAttempt() {
   };
 }
 
-export function addCommentPostSuccess() {
+export function addCommentPostSuccess(data) {
   return {
-    type: types.ADD_COMMENT_POST_SUCCESS
+    type: types.ADD_COMMENT_POST_SUCCESS,
+    payload: data
   };
 }
 export function addCommentPostError(error) {
@@ -808,9 +815,10 @@ export function removeCommentPostAttempt() {
   };
 }
 
-export function removeCommentPostSuccess() {
+export function removeCommentPostSuccess(data) {
   return {
-    type: types.REMOVE_COMMENT_POST_SUCCESS
+    type: types.REMOVE_COMMENT_POST_SUCCESS,
+    payload: data
   };
 }
 export function removeCommentPostError(error) {

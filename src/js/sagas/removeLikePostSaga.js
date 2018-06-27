@@ -7,8 +7,8 @@ export default function* removeLikePostSaga(action) {
   const id = action.payload;
   yield put(actions.removeLikePostAttempt());
   try {
-    yield call(api.removeLikePostApi, id);
-    yield put(actions.removeLikePostSuccess());
+    const res = yield call(api.removeLikePostApi, id);
+    yield put(actions.removeLikePostSuccess(res));
   } catch (e) {
     yield put(actions.removeLikePostError(e.response.data));
   }

@@ -81,13 +81,11 @@ router.post("/login", (req, res) => {
                 expiresIn: 3600 * 24
               });
 
-              res
-                .status(201)
-                .json({
-                  name: user.name,
-                  avatar: user.avatar,
-                  token: `Bearer ${token}`
-                });
+              res.status(201).json({
+                name: user.name,
+                avatar: user.avatar,
+                token: `Bearer ${token}`
+              });
             } else {
               errors.message = "password Incorrect";
               res.status(400).json(errors);

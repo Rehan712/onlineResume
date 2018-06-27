@@ -30,7 +30,9 @@ class CommentItem extends Component {
             {comment.user === auth._id ? (
               <button
                 class="btn btn-danger mr-1"
-                onClick={() => removeCommentPost(postId, comment._id)}
+                onClick={() => {
+                  removeCommentPost(postId, comment._id);
+                }}
               >
                 <i class="fas fa-times" />
               </button>
@@ -53,5 +55,7 @@ function mapStateToProps(state) {
 
 export default connect(
   mapStateToProps,
-  { removeCommentPost: actions.removeCommentPost }
+  {
+    removeCommentPost: actions.removeCommentPost
+  }
 )(CommentItem);
