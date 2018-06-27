@@ -8,6 +8,7 @@
     "prod": "webpack --config webpack.config.prod.js -p",
     "dev": "webpack-dev-server --config webpack.config.dev.js",
     "dev:node": "webpack --config webpack.config.dev.node.js",
+    "heroku-postbuild": "npm run prod",
     "start": "nodemon server/index.js"
   },
   "repository": {
