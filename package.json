@@ -10,7 +10,7 @@
     "dev:node": "webpack --config webpack.config.dev.node.js",
     "start": "node server/index.js",
     "server": "nodemon server/index.js",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install && npm run prod"
+    "heroku-postbuild": "npm install && npm run prod"
   },
   "repository": {
     "type": "git",
