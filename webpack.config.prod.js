@@ -93,13 +93,14 @@ module.exports = {
   plugins: [
     new MiniCssExtractPlugin({
       filename: "../css/styles.css"
-    }),
-    new PurifyCssPlugin({
-      paths: glob.sync([
-        require("path").join(__dirname, "./dist/index.html"),
-        require("path").join(__dirname, "./src/js/*.js"),
-        require("path").join(__dirname, "./src/js/*.jsx")
-      ])
     })
+    //,
+    // new PurifyCssPlugin({
+    //   paths: glob.sync([
+    //     require("path").join(__dirname, "./dist/index.html"),
+    //     require("path").join(__dirname, "./src/js/*.js"),
+    //     require("path").join(__dirname, "./src/js/*.jsx")
+    //   ])
+    // })
   ]
 };
