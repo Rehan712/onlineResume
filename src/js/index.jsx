@@ -35,6 +35,14 @@ sagaMiddleware.run(rootSaga);
 
 if (isTokenValid()) {
   store.dispatch(actions.submitLoginDataSuccess());
+} else if (
+  history.location.pathname === "/dashboard" ||
+  history.location.pathname === "/dashboard/createProfile" ||
+  history.location.pathname === "/dashboard/editProfile" ||
+  history.location.pathname === "/dashboard/addEducation" ||
+  history.location.pathname === "/dashboard/addExperience"
+) {
+  store.dispatch(push("/"));
 }
 
 ReactDom.render(
