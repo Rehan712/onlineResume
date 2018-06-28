@@ -54,9 +54,9 @@ function* watchSubmitEducationData() {
   yield takeLatest(types.SUBMIT_EDUCATION_DATA, submitEducationDataSaga);
 }
 
-function* watchDeleteProfileData() {
-  yield takeLatest(types.DELETE_PROFILE_DATA, deleteProfileSaga);
-}
+// function* watchDeleteProfileData() {
+//   yield takeLatest(types.DELETE_PROFILE_DATA, deleteProfileSaga);
+// }
 
 function* watchDeleteExperienceData() {
   yield takeLatest(types.DELETE_EXPERIENCE, deleteExperienceSaga);

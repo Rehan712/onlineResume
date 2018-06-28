@@ -27,8 +27,6 @@ class Navbar extends React.Component {
     const { signoutUser } = this.props;
     const { display, image } = this.state;
     const tokenValid = isTokenValid();
-
-    console.log("this is state display in navbar", display);
     return (
       <div>
         <nav className="navbar navbar-expand-sm navbar-dark bg-dark mb-4">

@@ -4,7 +4,6 @@ import { connect } from "react-redux";
 import * as actions from "../../actions";
 
 const ProfileActions = props => {
-  console.log("this is data Profile Actinos", props);
   return (
     <div
       className="btn-group mb-4"

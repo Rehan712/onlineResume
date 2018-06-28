@@ -6,7 +6,6 @@ import * as actions from "../../actions";
 class PostForm extends React.Component {
   render() {
     const { inputPost, submitPost, changePost, errors, getPosts } = this.props;
-    console.log("this si input POst", inputPost);
     return (
       <div className="post-form mb-3">
         <div className="card card-info">

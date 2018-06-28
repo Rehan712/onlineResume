@@ -36,7 +36,6 @@ const Education = ({ education, deleteEducation, errors }) => {
       );
     });
 
-  console.log("this is renderData", renderData);
   return (
     <div>
       <h4 class="mb-2">Education Credentials</h4>

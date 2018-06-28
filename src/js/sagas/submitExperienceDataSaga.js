@@ -9,8 +9,8 @@ export default function* submitExperienceDataSaga(action) {
   try {
     const res = yield call(api.submitExperienceApi, data);
     yield put(actions.submitExperienceDataSuccess(res));
-    alert("Submit Experience Successfuly");
     yield put(actions.resetExperience());
+    alert("Submit Experience Successfuly");
     yield put(push("/dashboard"));
   } catch (e) {
     yield put(actions.submitExperienceDataError(e.response.data));

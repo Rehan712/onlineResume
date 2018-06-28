@@ -18,7 +18,6 @@ class Login extends Component {
       submitErrors
     } = this.props;
     const { errors } = inputData;
-    console.log("these are the errors from login", errors);
     return (
       <div>
         <div className="login">

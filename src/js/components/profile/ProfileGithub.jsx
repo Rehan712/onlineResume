@@ -24,7 +24,6 @@ export default class ProfileGithub extends Component {
   }
   render() {
     const { repos } = this.state;
-    console.log("this is repos", repos);
     const repoItems =
       repos.length &&
       repos.map(repo => (

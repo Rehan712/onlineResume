@@ -35,8 +35,6 @@ sagaMiddleware.run(rootSaga);
 
 if (isTokenValid()) {
   store.dispatch(actions.submitLoginDataSuccess());
-} else {
-  store.dispatch(push("/"));
 }
 
 ReactDom.render(

@@ -7,7 +7,6 @@ export async function submitRegisterApi(data) {
 
 export async function submitLoginApi(data) {
   const res = await axios.post("/api/user/login", data);
-  console.log("this is response", res.data);
   return res.data;
 }
 
@@ -27,38 +26,33 @@ export async function getCurrentProfileApi() {
 }
 
 export async function submitProfileApi(data) {
-  console.log("this is data from Api", data);
   const token = localStorage.getItem("token");
   const res = await axios.post("/api/profile", data, {
     headers: {
       Authorization: token
     }
   });
-  console.log("this is response", res.data);
   return res.data;
 }
 
 export async function submitExperienceApi(data) {
-  console.log("this is data from Api", data);
   const token = localStorage.getItem("token");
   const res = await axios.post("/api/profile/experience", data, {
     headers: {
       Authorization: token
     }
   });
-  console.log("this is response", res.data);
   return res.data;
 }
 
 export async function submitEducationApi(data) {
-  console.log("this is data from Api", data);
   const token = localStorage.getItem("token");
   const res = await axios.post("/api/profile/education", data, {
     headers: {
       Authorization: token
     }
   });
-  console.log("this is response", res.data);
+
   return res.data;
 }
 
@@ -69,7 +63,7 @@ export async function deleteProfileApi() {
       Authorization: token
     }
   });
-  console.log("this is response", res.data);
+
   return res.data;
 }
 
@@ -84,7 +78,7 @@ export async function deleteEducationApi(id) {
       Authorization: token
     }
   });
-  console.log("this is response", res.data);
+
   return res.data;
 }
 
@@ -99,7 +93,7 @@ export async function deleteExperienceApi(id) {
       Authorization: token
     }
   });
-  console.log("this is response", res.data);
+
   return res.data;
 }
 
@@ -120,7 +114,7 @@ export async function submitPostApi(data) {
       Authorization: token
     }
   });
-  console.log("this is response", res.data);
+
   return res.data;
 }
 
@@ -131,7 +125,7 @@ export async function getPostsApi() {
       Authorization: token
     }
   });
-  console.log("this is response", res.data);
+
   return res.data;
 }
 
@@ -142,13 +136,12 @@ export async function deletePostApi(id) {
       Authorization: token
     }
   });
-  console.log("this is response", res.data);
+
   return res.data;
 }
 
 export async function addLikePostApi(id) {
   const token = localStorage.getItem("token");
-  console.log("this is id in addLike ", id);
   const axiosInstance = axios.create({
     baseURL: process.env.REACT_APP_BACKEND_HOST,
     headers: { Authorization: token }
@@ -158,7 +151,7 @@ export async function addLikePostApi(id) {
       Authorization: token
     }
   });
-  console.log("this is response", res.data);
+
   return res.data;
 }
 
@@ -173,12 +166,11 @@ export async function removeLikePostApi(id) {
       Authorization: token
     }
   });
-  console.log("this is response", res.data);
+
   return res.data;
 }
 
 export async function addCommentPostApi(id, data) {
-  console.log("this is the arguments in addComment", arguments);
   const token = localStorage.getItem("token");
   const axiosInstance = axios.create({
     baseURL: process.env.REACT_APP_BACKEND_HOST,
@@ -189,7 +181,7 @@ export async function addCommentPostApi(id, data) {
       Authorization: token
     }
   });
-  console.log("this is response", res.data);
+
   return res.data;
 }
 
@@ -204,7 +196,7 @@ export async function removeCommentPostApi(id, commentId) {
       Authorization: token
     }
   });
-  console.log("this is response", res.data);
+
   return res.data;
 }
 
@@ -219,6 +211,6 @@ export async function getSinglePostApi(id) {
       Authorization: token
     }
   });
-  console.log("this is response", res.data);
+
   return res.data;
 }

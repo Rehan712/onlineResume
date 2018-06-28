@@ -12,7 +12,6 @@ class Register extends Component {
     return this.props.inputData.errors.message;
   }
   render() {
-    console.log("this is data from register", this.props.registerData);
     const {
       changeName,
       changePassword,

@@ -12,7 +12,6 @@ class Post extends Component {
   }
   render() {
     const { postData, errors } = this.props;
-    console.log("this is post Data from POst", postData);
     const postContent = Object.keys(postData.data).length && (
       <div>
         <PostItem post={postData.data} showActions={false} />{" "}

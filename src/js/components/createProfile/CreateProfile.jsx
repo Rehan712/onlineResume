@@ -32,7 +32,6 @@ class CreateProfile extends Component {
       createEdit,
       submitErrors
     } = this.props;
-    console.log("this is createEdit from CreateProfile", createEdit);
     const {
       handle,
       skills,

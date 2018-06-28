@@ -13,7 +13,6 @@ export default function* deleteExperienceSaga(action) {
       alert("Experience Deleted Successfuly");
       yield put(push("/dashboard"));
     } catch (e) {
-      console.log("this is error from exp", e);
       yield put(actions.deleteExperienceError(e));
     }
   }

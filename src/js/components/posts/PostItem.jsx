@@ -39,7 +39,6 @@ class PostItem extends Component {
       auth: this.props.auth
     });
     const { auth } = this.state;
-    console.log("this is auth in PostItem", auth);
     return (
       <div>
         <div class="posts">
