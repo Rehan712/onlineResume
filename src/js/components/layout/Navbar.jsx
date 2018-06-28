@@ -10,9 +10,15 @@ class Navbar extends React.Component {
     super(props);
     this.state = {
       display: props.display,
-      image: localStorage.getItem("avatar")
+      image: localStorage.getItem("avatar"),
+      navCollapsed: true
     };
   }
+  onToogleNav = () => {
+    this.setState({
+      navCollapsed: !this.state.navCollapsed
+    });
+  };
   componentWillReceiveProps(nextProps) {
     const { display } = this.props;
     if (display !== nextProps.display) {
@@ -25,7 +31,7 @@ class Navbar extends React.Component {
   }
   render() {
     const { signoutUser } = this.props;
-    const { display, image } = this.state;
+    const { display, image, navCollapsed } = this.state;
     const tokenValid = isTokenValid();
     return (
       <div>
@@ -39,11 +45,16 @@ class Navbar extends React.Component {
               type="button"
               data-toggle="collapse"
               data-target="#mobile-nav"
+              onClick={this.onToogleNav}
             >
               <span className="navbar-toggler-icon" />
             </button>
 
-            <div className="collapse navbar-collapse" id="mobile-nav">
+            {/* <div className="collapse navbar-collapse" id="mobile-nav"> */}
+            <div
+              className={(navCollapsed ? "collapse" : "") + " navbar-collapse"}
+              id="mobile-nav"
+            >
               <ul className="navbar-nav mr-auto">
                 <li className="nav-item">
                   <Link to="/allProfiles" className="nav-link">
