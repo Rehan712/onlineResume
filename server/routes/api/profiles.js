@@ -255,4 +255,24 @@ router.delete(
   }
 );
 
+router.delete(
+  "/",
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    Profile.findOneAndRemove({ user: req.user.id }, (err, profile) => {
+      if (err) {
+        res.json({ message: "cannot find the profile" });
+      } else {
+        User.findOneAndRemove({ _id: req.user.id }, (err, user) => {
+          if (err) {
+            res.json({ message: "cannot find the user" });
+          } else {
+            res.json({ success: true });
+          }
+        });
+      }
+    });
+  }
+);
+
 module.exports = router;

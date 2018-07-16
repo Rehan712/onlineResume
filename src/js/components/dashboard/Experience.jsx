@@ -5,7 +5,6 @@ import Moment from "react-moment";
 import { arrayOf, func, any } from "prop-types";
 
 const Experience = ({ experience, deleteExperience, errors }) => {
-  console.log("this is experience", experience);
   const renderData =
     experience.length &&
     experience.map(item => {
